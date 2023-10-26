@@ -1,8 +1,12 @@
-﻿// Задача 1: Задайте двумерный массив размером m×n, заполненный случайными целыми числами.
-// m = 3, n = 4.
-// 1   4   8  19
-// 5   -2  33  -2
-// 77  3   8   1
+﻿// Задача 2: Задайте двумерный массив. 
+// Найдите элементы, у которых обе позиции чётные, и замените эти элементы на их квадраты.
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+
+// 1   4  7  2
+// 5  81  2  9
+// 8   4  2  4
 
 int enterInteger(string message)
 {
@@ -15,16 +19,33 @@ int enterInteger(string message)
 int[,] generateArray(int countCollums, int countLine, int a, int b)
 {
     int[,] array = new int[countLine, countCollums];
-    Random random = new Random();
+    Random rndArray = new Random();
     for (int i = 0; i < countCollums; i++)
     {
         for (int m = 0; m < countLine; m++)
         {
-            array[m, i] = random.Next(a, b);
+            array[m, i] = rndArray.Next(a, b);
         }
     }
     return array;
 }
+
+int[,] changeElemens(int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (i % 2 > 0 & j % 2 > 0)
+            {
+                array[i, j] *= array[i, j];
+            }
+        }
+
+    }
+    return array;
+}
+
 
 void printMassive(int[,] collection)
 {
@@ -42,5 +63,11 @@ void printMassive(int[,] collection)
 int countCollums = enterInteger("Введите количество колоннок массива: ");
 int countLine = enterInteger("Введите количество строк массива: ");
 
+
 int[,] array = generateArray(countCollums, countLine, 1, 9);
+
+printMassive(array);
+
+changeElemens(array);
+
 printMassive(array);

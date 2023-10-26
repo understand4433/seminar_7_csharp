@@ -12,19 +12,21 @@ int enterInteger(string message)
     return result;
 }
 
-int[,] generateArray(int countCollums, int countLine, int a, int b){
+int[,] generateArray(int countCollums, int countLine, int a, int b)
+{
     int[,] array = new int[countLine, countCollums];
     for (int i = 0; i < countCollums; i++)
     {
         for (int m = 0; m < countLine; m++)
         {
-            array[m, i] = m+i;
+            array[m, i] = m + i;
         }
     }
     return array;
 }
 
-void printMassive(int[,] collection){
+void printMassive(int[,] collection)
+{
     for (int i = 0; i < collection.GetLength(0); i++)
     {
         Console.WriteLine();
